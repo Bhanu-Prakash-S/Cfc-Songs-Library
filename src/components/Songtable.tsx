@@ -15,8 +15,8 @@ interface SongTableProps {
 
 export default function Songtable({ songs }: SongTableProps) {
   return (
-    <div className="py-4  overflow-x-auto">
-      <table className="w-auto bg-white shadow-lg rounded-md overflow-hidden">
+    <div className="p-3 flex justify-center w-full bg-green-300 md:w-2/3 justify-start">
+      <table className=" bg-white shadow-lg rounded-md relative">
         <thead className="bg-gray-200">
           <tr>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-950 uppercase tracking-wider">
@@ -36,17 +36,22 @@ export default function Songtable({ songs }: SongTableProps) {
             <tr key={song.id} className="hover:bg-gray-100">
               <td className="px-6 py-3 whitespace-nowrap">
                 <div className="flex items-center">
-                  <span className="text-sm font-serif text-gray-900">
-                    {song.song_name}
+                  <span
+                    className="text-lg text-gray-800"
+                    style={{
+                      fontFamily: 'Ramabhadra, "Noto Sans Telugu", sans-serif',
+                    }}
+                  >
+                    {song.title}
                   </span>
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span
                   className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                    song.category === "worship"
+                    song.category === "Worship"
                       ? "bg-purple-100 text-purple-800"
-                      : song.category === "praise"
+                      : song.category === "Praise"
                       ? "bg-green-100 text-green-800"
                       : "bg-yellow-100 text-yellow-800"
                   }`}

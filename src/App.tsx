@@ -4,9 +4,13 @@ import { Header } from "./components/header";
 
 import type { Song } from "./lib/types";
 import Songtable from "./components/Songtable";
+import AlphabetFilter from "./components/AlphabetFilter";
 
 function App() {
   const [songs, setSongs] = useState<Song[]>([]);
+  const [selectedLetter, setSelectedLetter] = useState("");
+
+  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   useEffect(() => {
     fetchSongs();
@@ -20,10 +24,13 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <Header />
-      <Songtable songs={songs} />
-    </div>
+      <div className=" flex flex-col md:flex-row">
+        <AlphabetFilter />
+        <Songtable songs={songs} />
+      </div>
+    </>
   );
 }
 
