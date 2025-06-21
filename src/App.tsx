@@ -1,8 +1,9 @@
 import { supabase } from "./supabase";
 import { useEffect, useState } from "react";
-import type { Database } from "./lib/database.types";
+import { Header } from "./components/header";
 
-type Song = Database["public"]["Tables"]["songs_database"]["Row"];
+import type { Song } from "./lib/types";
+import Songtable from "./components/Songtable";
 
 function App() {
   const [songs, setSongs] = useState<Song[]>([]);
@@ -13,17 +14,16 @@ function App() {
 
   async function fetchSongs() {
     let { data, error } = await supabase.from("songs_database").select("*");
-
     if (error) throw error;
+
     setSongs(data ?? []);
   }
 
   return (
-    <ul>
-      {songs.map((song) => (
-        <li key={song.id}> {song.song_name + " - " + song.category}</li>
-      ))}
-    </ul>
+    <div>
+      <Header />
+      <Songtable songs={songs} />
+    </div>
   );
 }
 
