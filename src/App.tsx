@@ -5,10 +5,12 @@ import { Header } from "./components/header";
 import type { Song } from "./lib/types";
 import Songtable from "./components/Songtable";
 import AlphabetFilter from "./components/AlphabetFilter";
+import Category from "./components/Category";
 
 function App() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [selectedLetter, setSelectedLetter] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
   const [filteredSongs, setFilteredSongs] = useState<Song[]>([]);
 
   useEffect(() => {
@@ -24,28 +26,44 @@ function App() {
 
   useEffect(() => {
     getFilteredSongs();
-  }, [songs, selectedLetter]);
+  }, [songs, selectedLetter, selectedCategory]);
 
   function getFilteredSongs() {
-    let new_songs = songs.filter((song) =>
-      song.song_name.toUpperCase().startsWith(selectedLetter)
-    );
+    const result = songs.filter((song) => {
+      const letter_filter =
+        selectedLetter === "All" ||
+        song.song_name.toUpperCase().startsWith(selectedLetter);
+      const category_filter =
+        selectedCategory === "All" || song.category === selectedCategory;
 
-    setFilteredSongs(new_songs);
+      return letter_filter && category_filter;
+    });
+
+    setFilteredSongs(result);
   }
 
   function handleLetterSelect(letter: string) {
     setSelectedLetter(letter);
   }
 
+  function handleCategorySelect(category: string) {
+    setSelectedCategory(category);
+  }
+
   return (
     <>
       <Header />
-      <div className=" flex flex-col md:flex-row">
-        <AlphabetFilter
-          selectedLetter={selectedLetter}
-          handleSelectedLetter={handleLetterSelect}
-        />
+      <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col">
+          <AlphabetFilter
+            selectedLetter={selectedLetter}
+            handleSelectedLetter={handleLetterSelect}
+          />
+          <Category
+            handleSelectedCategory={handleCategorySelect}
+            selectedCategory={selectedCategory}
+          />
+        </div>
         <Songtable songs={filteredSongs} />
       </div>
     </>
