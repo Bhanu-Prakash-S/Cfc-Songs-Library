@@ -10,7 +10,7 @@ import Category from "./components/Category";
 function App() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [selectedLetter, setSelectedLetter] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredSongs, setFilteredSongs] = useState<Song[]>([]);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ function App() {
     <>
       <Header />
       <div className="flex flex-col md:flex-row">
-        <div className="flex flex-col">
+        <div className="flex flex-col md:w-1/3">
           <AlphabetFilter
             selectedLetter={selectedLetter}
             handleSelectedLetter={handleLetterSelect}
