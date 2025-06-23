@@ -15,7 +15,7 @@ interface SongTableProps {
 
 export default function Songtable({ songs }: SongTableProps) {
   return (
-    <div className="p-3 flex justify-center w-full bg-green-300 md:w-2/3 justify-start">
+    <div className="p-3 flex justify-center w-full bg-green-300 md:w-2/3 md:justify-start">
       <table className=" bg-white shadow-lg rounded-md relative">
         <thead className="bg-gray-200">
           <tr>

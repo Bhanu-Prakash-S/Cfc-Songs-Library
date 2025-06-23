@@ -9,8 +9,7 @@ import AlphabetFilter from "./components/AlphabetFilter";
 function App() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [selectedLetter, setSelectedLetter] = useState("");
-
-  const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const [filteredSongs, setFilteredSongs] = useState<Song[]>([]);
 
   useEffect(() => {
     fetchSongs();
@@ -23,12 +22,31 @@ function App() {
     setSongs(data ?? []);
   }
 
+  useEffect(() => {
+    getFilteredSongs();
+  }, [songs, selectedLetter]);
+
+  function getFilteredSongs() {
+    let new_songs = songs.filter((song) =>
+      song.song_name.toUpperCase().startsWith(selectedLetter)
+    );
+
+    setFilteredSongs(new_songs);
+  }
+
+  function handleLetterSelect(letter: string) {
+    setSelectedLetter(letter);
+  }
+
   return (
     <>
       <Header />
       <div className=" flex flex-col md:flex-row">
-        <AlphabetFilter />
-        <Songtable songs={songs} />
+        <AlphabetFilter
+          selectedLetter={selectedLetter}
+          handleSelectedLetter={handleLetterSelect}
+        />
+        <Songtable songs={filteredSongs} />
       </div>
     </>
   );
