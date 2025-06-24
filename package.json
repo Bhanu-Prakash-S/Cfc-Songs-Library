@@ -16,12 +16,14 @@
     "@supabase/supabase-js": "^2.50.0",
     "@tailwindcss/vite": "^4.1.10",
     "bootstrap": "^5.3.7",
+    "lodash": "^4.17.21",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
+    "@types/lodash": "^4.17.18",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",

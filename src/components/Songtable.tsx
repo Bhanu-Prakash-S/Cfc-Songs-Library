@@ -1,21 +1,26 @@
+import { useState } from "react";
 import type { Song } from "../lib/types";
-import { supabaseUrl } from "../supabase";
-
-function getSongUrl(song_name: string): string {
-  let download_url = supabaseUrl + "/storage/v1/object/public/songs/";
-  let language = "Telugu_songs/";
-  let new_name = song_name.replace(" ", "%20");
-
-  return download_url + language + new_name + ".pdf";
-}
+import { Pagination } from "./Pagination";
+import { paginate } from "../utils/paginate";
+import { getSongUrl } from "../utils/getSongsUrl";
 
 interface SongTableProps {
   songs: Song[];
 }
 
 export default function Songtable({ songs }: SongTableProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const pageSize = 8;
+  const itemsCount = songs.length;
+  const pageSongs = paginate(songs, currentPage, pageSize);
+
+  function handlePageChange(pageNum: number) {
+    setCurrentPage(pageNum);
+  }
+
   return (
-    <div className="p-4 w-full md:w-2/3">
+    <div className="p-4 w-full md:w-2/3 flex flex-col">
       <div className="flex justify-start">
         <table className="w-full md:max-w-10/12 table-fixed">
           <thead className="bg-gray-200">
@@ -29,7 +34,7 @@ export default function Songtable({ songs }: SongTableProps) {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-red-800">
-            {songs.map((song) => (
+            {pageSongs.map((song) => (
               <tr key={song.id} className="hover:bg-gray-100">
                 <td className="bg-gray-50 px-2 md:px-4 py-3">
                   <div className="flex items-center gap-2 flex-wrap">
@@ -89,6 +94,13 @@ export default function Songtable({ songs }: SongTableProps) {
           </tbody>
         </table>
       </div>
+
+      <Pagination
+        pageSize={pageSize}
+        totalItemsCount={itemsCount}
+        handlePageChange={handlePageChange}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
