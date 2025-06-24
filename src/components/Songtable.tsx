@@ -15,15 +15,15 @@ interface SongTableProps {
 
 export default function Songtable({ songs }: SongTableProps) {
   return (
-    <div className="p-3 flex justify-center w-full  md:w-2/3 md:justify-start">
-      <div className="w-full max-w-full overflow-x-auto">
-        <table className="min-w-3/5 table-fixed">
+    <div className="p-4 w-full md:w-2/3">
+      <div className="flex justify-start">
+        <table className="w-full md:max-w-10/12 table-fixed">
           <thead className="bg-gray-200">
             <tr>
-              <th className=" w-3/4 px-2 md:px-4 py-3 text-left text-xs font-medium text-gray-950 uppercase tracking-wider">
+              <th className=" w-2/3 py-3 px-2 md:px-4 text-left text-xs font-medium text-gray-950 uppercase tracking-wider">
                 Song name
               </th>
-              <th className="w-1/4 px-2 md:px-3 text-left text-xs font-medium text-gray-950 uppercase tracking-wider">
+              <th className=" w-1/3 text-center text-xs font-medium text-gray-950 uppercase tracking-wider">
                 Download
               </th>
             </tr>
@@ -34,7 +34,7 @@ export default function Songtable({ songs }: SongTableProps) {
                 <td className="bg-gray-50 px-2 md:px-4 py-3">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span
-                      className="text-md md:text-lg text-gray-800 truncate"
+                      className="text-sm text-gray-800 truncate"
                       style={{
                         fontFamily:
                           'Ramabhadra, "Noto Sans Telugu", sans-serif',
@@ -56,8 +56,8 @@ export default function Songtable({ songs }: SongTableProps) {
                   </div>
                 </td>
 
-                <td className="bg-gray-50 px-3 py-4">
-                  <div className="flex space-x-1  justify-start md:justify-evenly">
+                <td className="bg-gray-50 py-4">
+                  <div className="flex justify-evenly">
                     <a
                       href={getSongUrl(song.song_name)}
                       target="_blank"

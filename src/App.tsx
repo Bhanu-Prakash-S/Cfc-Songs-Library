@@ -6,12 +6,14 @@ import type { Song } from "./lib/types";
 import Songtable from "./components/Songtable";
 import AlphabetFilter from "./components/AlphabetFilter";
 import Category from "./components/Category";
+import SearchFilter from "./components/SearchFilter";
 
 function App() {
   const [songs, setSongs] = useState<Song[]>([]);
   const [selectedLetter, setSelectedLetter] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredSongs, setFilteredSongs] = useState<Song[]>([]);
+  const [selectedSearchTerm, setSelectedSearchTerm] = useState("");
 
   useEffect(() => {
     fetchSongs();
@@ -26,17 +28,22 @@ function App() {
 
   useEffect(() => {
     getFilteredSongs();
-  }, [songs, selectedLetter, selectedCategory]);
+  }, [songs, selectedLetter, selectedCategory, selectedSearchTerm]);
 
   function getFilteredSongs() {
     const result = songs.filter((song) => {
+      const search_filter =
+        selectedSearchTerm === "" ||
+        song.song_name.toLowerCase().includes(selectedSearchTerm.toLowerCase());
+
       const letter_filter =
         selectedLetter === "All" ||
         song.song_name.toUpperCase().startsWith(selectedLetter);
+
       const category_filter =
         selectedCategory === "All" || song.category === selectedCategory;
 
-      return letter_filter && category_filter;
+      return search_filter && letter_filter && category_filter;
     });
 
     setFilteredSongs(result);
@@ -50,11 +57,20 @@ function App() {
     setSelectedCategory(category);
   }
 
+  function handleSearchTerm(term: string) {
+    setSelectedSearchTerm(term);
+    console.log(selectedSearchTerm);
+  }
+
   return (
     <>
       <Header />
       <div className="flex flex-col md:flex-row">
         <div className="flex flex-col md:w-1/3">
+          <SearchFilter
+            searchTerm={selectedSearchTerm}
+            handleSearchTerm={handleSearchTerm}
+          />
           <AlphabetFilter
             selectedLetter={selectedLetter}
             handleSelectedLetter={handleLetterSelect}
