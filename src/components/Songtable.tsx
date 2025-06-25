@@ -36,19 +36,22 @@ export default function Songtable({ songs }: SongTableProps) {
           <tbody className="bg-white divide-y divide-red-800">
             {pageSongs.map((song) => (
               <tr key={song.id} className="hover:bg-gray-100">
-                <td className="bg-gray-50 px-2 md:px-4 py-3">
-                  <div className="flex items-center gap-2 flex-wrap">
+                <td className="bg-gray-50 px-2 md:px-4 ">
+                  <div className="flex items-center flex-wrap">
                     <span
-                      className="text-sm text-gray-800 truncate"
+                      className=" text-lg font-medium text-gray-950 tracking-wide truncate"
                       style={{
                         fontFamily:
-                          'Ramabhadra, "Noto Sans Telugu", sans-serif',
+                          "'Tenali Ramakrishna', Mandali, Ramabhadra, Noto Sans Telugu, sans-serif",
+                        lineHeight: "1",
+                        paddingTop: "8px",
+                        paddingRight: "5px",
                       }}
                     >
                       {song.title}
                     </span>
                     <span
-                      className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap ${
+                      className={`px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap ${
                         song.category === "Worship"
                           ? "bg-purple-100 text-purple-800"
                           : song.category === "Praise"

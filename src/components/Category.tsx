@@ -15,6 +15,7 @@ export default function Category({
         {categories.map((category) =>
           category === selectedCategory ? (
             <button
+              key={category}
               onClick={() => handleSelectedCategory(category)}
               className="inline-flex px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap bg-blue-500"
             >
@@ -22,6 +23,7 @@ export default function Category({
             </button>
           ) : (
             <button
+              key={category}
               onClick={() => handleSelectedCategory(category)}
               className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap ${
                 category === "Worship"

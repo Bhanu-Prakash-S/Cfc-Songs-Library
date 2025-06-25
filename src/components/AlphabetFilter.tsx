@@ -15,6 +15,7 @@ export default function AlphabetFilter({
         {letters.map((letter) =>
           letter === selectedLetter ? (
             <button
+              key={letter}
               onClick={() => handleSelectedLetter(letter)}
               className="w-10 rounded-lg text-sm font-semibold text-center bg-blue-500"
             >
@@ -22,6 +23,7 @@ export default function AlphabetFilter({
             </button>
           ) : (
             <button
+              key={letter}
               onClick={() => handleSelectedLetter(letter)}
               className="w-10 rounded-lg text-sm font-semibold text-center bg-[#f1e9bb]"
             >
