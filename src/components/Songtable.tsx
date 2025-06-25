@@ -1,4 +1,3 @@
-import { useState } from "react";
 import type { Song } from "../lib/types";
 import { Pagination } from "./Pagination";
 import { paginate } from "../utils/paginate";
@@ -6,18 +5,18 @@ import { getSongUrl } from "../utils/getSongsUrl";
 
 interface SongTableProps {
   songs: Song[];
+  currentPage: number;
+  handlePageChange: (pageNum: number) => void;
 }
 
-export default function Songtable({ songs }: SongTableProps) {
-  const [currentPage, setCurrentPage] = useState(1);
-
+export default function Songtable({
+  songs,
+  currentPage,
+  handlePageChange,
+}: SongTableProps) {
   const pageSize = 8;
   const itemsCount = songs.length;
   const pageSongs = paginate(songs, currentPage, pageSize);
-
-  function handlePageChange(pageNum: number) {
-    setCurrentPage(pageNum);
-  }
 
   return (
     <div className="p-4 w-full md:w-2/3 flex flex-col">

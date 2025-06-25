@@ -10,10 +10,11 @@ import SearchFilter from "./components/SearchFilter";
 
 function App() {
   const [songs, setSongs] = useState<Song[]>([]);
-  const [selectedLetter, setSelectedLetter] = useState("");
+  const [selectedLetter, setSelectedLetter] = useState("All");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredSongs, setFilteredSongs] = useState<Song[]>([]);
   const [selectedSearchTerm, setSelectedSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetchSongs();
@@ -55,11 +56,15 @@ function App() {
 
   function handleCategorySelect(category: string) {
     setSelectedCategory(category);
+    setCurrentPage(1);
   }
 
   function handleSearchTerm(term: string) {
     setSelectedSearchTerm(term);
-    console.log(selectedSearchTerm);
+  }
+
+  function handlePageChange(pageNum: number) {
+    setCurrentPage(pageNum);
   }
 
   return (
@@ -80,7 +85,11 @@ function App() {
             selectedCategory={selectedCategory}
           />
         </div>
-        <Songtable songs={filteredSongs} />
+        <Songtable
+          songs={filteredSongs}
+          currentPage={currentPage}
+          handlePageChange={handlePageChange}
+        />
       </div>
     </>
   );
