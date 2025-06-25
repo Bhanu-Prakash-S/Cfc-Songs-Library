@@ -17,7 +17,7 @@ export default function AlphabetFilter({
             <button
               key={letter}
               onClick={() => handleSelectedLetter(letter)}
-              className="w-10 rounded-lg text-sm font-semibold text-center bg-blue-500"
+              className="w-10 rounded-lg text-sm font-semibold text-center text-[#f1e9bb] bg-[#660000]"
             >
               {letter}
             </button>

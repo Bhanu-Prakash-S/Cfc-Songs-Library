@@ -7,8 +7,10 @@ interface PaginationProps {
   currentPage: number;
 }
 
-const activePage: string = "rounded-sm border-1 px-2.5 p-2 bg-teal-500";
-const otherPage: string = "rounded-sm border-1 px-2.5 p-2 bg-amber-100";
+const activePage: string =
+  "rounded-sm border-1 px-2.5 p-2 bg-[#660000] text-[#f1e9bb]";
+const otherPage: string =
+  "rounded-sm border-1 px-2.5 p-2 bg-[#f1e9bb] text-[#660000]";
 
 export function Pagination({
   pageSize,

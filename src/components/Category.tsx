@@ -17,7 +17,7 @@ export default function Category({
             <button
               key={category}
               onClick={() => handleSelectedCategory(category)}
-              className="inline-flex px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap bg-blue-500"
+              className="inline-flex px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap bg-[#660000] text-[#f1e9bb]"
             >
               {category}
             </button>
