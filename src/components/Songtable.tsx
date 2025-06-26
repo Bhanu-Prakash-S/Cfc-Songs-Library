@@ -7,21 +7,23 @@ interface SongTableProps {
   songs: Song[];
   currentPage: number;
   handlePageChange: (pageNum: number) => void;
+  isAdmin: boolean;
 }
 
 export default function Songtable({
   songs,
   currentPage,
   handlePageChange,
+  isAdmin,
 }: SongTableProps) {
-  const pageSize = 8;
+  const pageSize = 10;
   const itemsCount = songs.length;
   const pageSongs = paginate(songs, currentPage, pageSize);
 
   return (
     <div className="p-4 w-full md:w-2/3 flex flex-col">
       <div className="flex justify-start">
-        <table className="w-full md:max-w-10/12 table-fixed">
+        <table className="w-full md:max-w-10/12 table-fixed drop-shadow-xl/20">
           <thead className="bg-gray-200">
             <tr>
               <th className=" w-2/3 py-3 px-2 md:px-4 text-left text-xs font-medium text-gray-950 uppercase tracking-wider">
@@ -30,6 +32,11 @@ export default function Songtable({
               <th className=" w-1/3 text-center text-xs font-medium text-gray-950 uppercase tracking-wider">
                 Download
               </th>
+              {isAdmin && (
+                <th className=" w-1/3 text-center text-xs font-medium text-gray-950 uppercase tracking-wider">
+                  Update
+                </th>
+              )}
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-red-800">
@@ -38,7 +45,7 @@ export default function Songtable({
                 <td className="bg-gray-50 px-2 md:px-4 ">
                   <div className="flex items-center flex-wrap">
                     <span
-                      className=" text-lg font-medium text-gray-950 tracking-wide truncate"
+                      className="text-lg font-medium text-gray-950 tracking-wide truncate"
                       style={{
                         fontFamily:
                           "'Tenali Ramakrishna', Mandali, Ramabhadra, Noto Sans Telugu, sans-serif",
@@ -89,6 +96,17 @@ export default function Songtable({
                         className="w-full h-3"
                       />
                     </a>
+                  </div>
+                </td>
+
+                <td>
+                  <div className="flex justify-evenly p-1">
+                    <button className="min-w-1/4 h-6 text-xs ring-2 bg-blue-300 ring-blue-500 rounded-lg">
+                      Update
+                    </button>
+                    <button className="text-white min-w-1/4 h-6 text-xs font-bold bg-red-700 ring-2 ring-red-400 rounded-lg">
+                      Delete
+                    </button>
                   </div>
                 </td>
               </tr>

@@ -8,9 +8,9 @@ interface PaginationProps {
 }
 
 const activePage: string =
-  "rounded-sm border-1 px-2.5 p-2 bg-[#660000] text-[#f1e9bb]";
+  "cursor-pointer rounded-sm border-1 px-2.5 p-2 bg-[#660000] text-[#f1e9bb]";
 const otherPage: string =
-  "rounded-sm border-1 px-2.5 p-2 bg-[#f1e9bb] text-[#660000]";
+  "cursor-pointer rounded-sm border-1 px-2.5 p-2 bg-[#f1e9bb] text-[#660000]";
 
 export function Pagination({
   pageSize,
