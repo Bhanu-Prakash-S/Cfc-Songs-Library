@@ -1,11 +1,9 @@
-import { Admins } from "./pages/Admins";
-// import { Users } from "./pages/users";
+import { Users } from "./pages/Users";
 
 function App() {
   return (
     <>
-      {/* <Users /> */}
-      <Admins />
+      <Users />
     </>
   );
 }

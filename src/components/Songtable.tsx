@@ -92,17 +92,18 @@ export default function Songtable({
                     </a>
                   </div>
                 </td>
-
-                <td>
-                  <div className="flex justify-evenly p-1">
-                    <button className="min-w-1/4 h-6 text-xs ring-2 bg-blue-300 ring-blue-500 rounded-lg">
-                      Update
-                    </button>
-                    <button className="text-white min-w-1/4 h-6 text-xs font-bold bg-red-700 ring-2 ring-red-400 rounded-lg">
-                      Delete
-                    </button>
-                  </div>
-                </td>
+                {isAdmin && (
+                  <td>
+                    <div className="flex justify-evenly p-1">
+                      <button className="min-w-1/4 h-6 text-xs ring-2 bg-blue-300 ring-blue-500 rounded-lg">
+                        Update
+                      </button>
+                      <button className="text-white min-w-1/4 h-6 text-xs font-bold bg-red-700 ring-2 ring-red-400 rounded-lg">
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>
