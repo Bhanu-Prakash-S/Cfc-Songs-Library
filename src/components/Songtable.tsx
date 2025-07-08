@@ -35,7 +35,7 @@ export default function Songtable({
                 Download
               </th>
               {isAdmin && (
-                <th className=" w-1/3 text-center text-xs font-medium text-gray-950 uppercase tracking-wider">
+                <th className="w-1/10 text-center text-xs font-medium text-gray-950 uppercase tracking-wider">
                   Update
                 </th>
               )}
@@ -47,7 +47,7 @@ export default function Songtable({
                 <td className="bg-gray-50 px-2 md:px-4 ">
                   <div className="flex items-center flex-wrap">
                     <span
-                      className="text-lg font-medium text-gray-950 tracking-wide truncate"
+                      className="text-lg font-medium text-gray-950 tracking-wider truncate"
                       style={{
                         fontFamily:
                           "'Tenali Ramakrishna', Mandali, Ramabhadra, Noto Sans Telugu, sans-serif",
@@ -94,12 +94,9 @@ export default function Songtable({
                 </td>
                 {isAdmin && (
                   <td>
-                    <div className="flex justify-evenly p-1">
-                      <button className="min-w-1/4 h-6 text-xs ring-2 bg-blue-300 ring-blue-500 rounded-lg">
+                    <div className="flex justify-center">
+                      <button className="min-w-1/4 h-6 text-xs px-1.5 ring-2 bg-blue-300 ring-blue-500 rounded-lg">
                         Update
-                      </button>
-                      <button className="text-white min-w-1/4 h-6 text-xs font-bold bg-red-700 ring-2 ring-red-400 rounded-lg">
-                        Delete
                       </button>
                     </div>
                   </td>

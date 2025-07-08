@@ -22,7 +22,11 @@ export function Users() {
   }, []);
 
   async function fetchSongs() {
-    let { data, error } = await supabase.from("songs_database").select("*");
+    let { data, error } = await supabase
+      .from("songs_database")
+      .select("*")
+      .order("title", { ascending: true });
+
     if (error) throw error;
 
     setSongs(data ?? []);
