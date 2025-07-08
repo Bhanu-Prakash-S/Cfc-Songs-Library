@@ -2,6 +2,8 @@ import type { Song } from "../lib/types";
 import { Pagination } from "./Pagination";
 import { paginate } from "../utils/paginate";
 import { getSongUrl } from "../utils/getSongsUrl";
+import download from "../assets/download-pdf.png";
+import Canva from "../assets/Logo.png";
 
 interface SongTableProps {
   songs: Song[];
@@ -78,11 +80,7 @@ export default function Songtable({
                       rel="noopener noreferrer"
                       className="px-3 py-1 border border-gray-300 shadow-sm rounded bg-white hover:bg-gray-50 flex-shrink-0"
                     >
-                      <img
-                        src="src\assets\download-pdf.png"
-                        alt="PDF"
-                        className="w-full h-4"
-                      />
+                      <img src={download} alt="PDF" className="w-full h-4" />
                     </a>
                     <a
                       href={song.canva_link}
@@ -90,11 +88,7 @@ export default function Songtable({
                       rel="noopener noreferrer"
                       className="px-2 py-1 border border-transparent shadow-sm rounded bg-white hover:bg-gray-50 flex-shrink-0"
                     >
-                      <img
-                        src="src\assets\Logo.png"
-                        alt="Canva"
-                        className="w-full h-3"
-                      />
+                      <img src={Canva} alt="Canva" className="w-full h-3" />
                     </a>
                   </div>
                 </td>
