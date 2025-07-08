@@ -18,7 +18,7 @@ export default function Songtable({
   handlePageChange,
   isAdmin,
 }: SongTableProps) {
-  const pageSize = 10;
+  const pageSize = 20;
   const itemsCount = songs.length;
   const pageSongs = paginate(songs, currentPage, pageSize);
 
